@@ -13,7 +13,11 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">Tasks <a href="{{route('task.create')}}" class="btn btn-sm btn-success float-right">Add task</a></div>
+                    <div class="card-header">Tasks
+                        @if(empty($tasks->isEmpty()))
+                        <a href="{{route('task.create')}}" class="btn btn-sm btn-success float-right">Add task</a>
+                        @endif
+                    </div>
                     <div class="card-body d-flex justify-content-around flex-wrap">
                         @forelse($tasks as $task)
                             <div class="card my-2 mx-4" style="width: 20rem;">
