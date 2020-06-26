@@ -7,7 +7,8 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <a class="btn btn-primary btn-lg" href="{{route('task.index')}}">View Task list</a>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -15,6 +16,7 @@
                     @endif
 
                     You are logged in!
+
                 </div>
             </div>
         </div>
