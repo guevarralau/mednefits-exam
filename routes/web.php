@@ -18,16 +18,17 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::middleware('auth')->group(function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('tasks' ,'TaskController@index')->name('task.index');
+    Route::get('create/task', 'TaskController@create')->name('task.create');
+    Route::post('store/task', 'TaskController@store')->name('task.store');
+    Route::get('task/{task}', 'TaskController@show')->name('task.show');
+    Route::get('task/edit/{task}', 'TaskController@edit')->name('task.edit');
+    Route::post('task/update/{task}', 'TaskController@update')->name('task.update');
+    Route::delete('task/delete/{task}', 'TaskController@destroy')->name('task.delete');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('tasks' ,'TaskController@index')->name('task.index');
-Route::get('create/task', 'TaskController@create')->name('task.create');
-Route::post('store/task', 'TaskController@store')->name('task.store');
-Route::get('task/{task}', 'TaskController@show')->name('task.show');
-Route::get('task/edit/{task}', 'TaskController@edit')->name('task.edit');
-Route::post('task/update/{task}', 'TaskController@update')->name('task.update');
-Route::delete('task/delete/{task}', 'TaskController@destroy')->name('task.delete');
 
 Route::fallback(function(){
     abort(404,'Url is undefined please enter a correct url');
