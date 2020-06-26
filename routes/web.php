@@ -29,4 +29,8 @@ Route::get('task/edit/{task}', 'TaskController@edit')->name('task.edit');
 Route::post('task/update/{task}', 'TaskController@update')->name('task.update');
 Route::delete('task/delete/{task}', 'TaskController@destroy')->name('task.delete');
 
+Route::fallback(function(){
+    abort(404,'Url is undefined please enter a correct url');
+});
+
 
